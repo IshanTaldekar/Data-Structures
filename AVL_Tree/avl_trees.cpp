@@ -1,3 +1,10 @@
+/*
+
+ * Author: Ishan Taldekar
+ * Description: Just trying to understand AVL Trees well.
+
+ */
+
 #include "avl_trees.h"
 
 avl_tree::avl_tree(int item) {
@@ -212,7 +219,7 @@ int avl_tree::insert(int value, Node*& current_node) {
 }
 
 bool avl_tree::remove(int target_value) {
-  /* TODO */
+  /* TODO: Remove node */
 
   return false;
 
@@ -336,7 +343,7 @@ bool avl_tree::contains(int target_value) {
 
 int avl_tree::get_next_lower(int value) {
   /* returns value within tree that is immediately smaller than the current value */
-  /* TODO */
+  /* TODO: Get Predecessor */
 
 
 

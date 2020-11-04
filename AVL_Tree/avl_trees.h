@@ -1,12 +1,16 @@
-#pragma once
+/*
+
+ * Author: Ishan Taldekar
+ * Description: Just trying to understand AVL Trees well.
+
+ */
+
+#ifndef AVL_TREE
+#define AVL_TREE
 
 #include <iostream>
 #include <string>
 using namespace std;
-
-
-#ifndef AVL_TREE
-#define AVL_TREE
 
 /* status codes for insert and delete operations */
 #define OP_CHANGED_HEIGHT 0  // insert/delete successful, subtree height changed
