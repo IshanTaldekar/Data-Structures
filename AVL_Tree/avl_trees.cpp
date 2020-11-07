@@ -1,7 +1,14 @@
 /*
 
  * Author: Ishan Taldekar
- * Description: Just trying to understand AVL Trees well.
+ * Description: An AVL tree is a self-balancing binary tree, which enforces that the
+     difference in the height of any nodes child subtrees can be at most 1. In
+     AVL trees, search, insertion and deletion take O(log N) time complexity in
+     average and worst cases. Read-only operations can be carried out on an AVL
+     tree in a similar fashion as a binary search tree; however, any modifications
+     must ensure that the tree remains balanced. AVL Trees are beneficial in
+     cases where insertions and deletions are not that frequent but you have
+     to frequently look-up for items present.
 
  */
 
@@ -153,15 +160,14 @@ void avl_tree::balance_right_heavy(Node*& current_root) {
 bool avl_tree::insert(int value) {
   /* inserts node into the binary search tree by relying on a recursive helper */
 
-  int status{};
-  if ((status = insert(value, root)) == OP_FAILURE) return false;
+  if ((insert(value, root)) == OP_FAILURE) return false;
 
   return true;  // returns true if node was inserted
 
 }
 
 int avl_tree::insert(int value, Node*& current_node) {
-  /* TODO: COMMENT */
+  /* insert recursive helper */
 
   int status = OP_CHANGED_HEIGHT;
 
@@ -218,13 +224,6 @@ int avl_tree::insert(int value, Node*& current_node) {
 
 }
 
-bool avl_tree::remove(int target_value) {
-  /* TODO: Remove node */
-
-  return false;
-
-}
-
 void avl_tree::display() {
 
   int depth = 0;
@@ -232,7 +231,7 @@ void avl_tree::display() {
 
 }
 
-void avl_tree::display_subtree(Node* current_node, int depth) {
+void avl_tree::display_subtree(Node*& current_node, int depth) {
 
   if (!current_node) return;
 
@@ -242,13 +241,13 @@ void avl_tree::display_subtree(Node* current_node, int depth) {
 
   }
 
-  if (current_node) {
 
-      for (int i = 0; i < depth; i++)
-        cout << "  ";
-      cout << current_node->data << endl;
+  for (int i = 0; i < depth; i++)
+    cout << "  ";
 
-  }
+  cout << current_node->data << endl;
+  cout.flush();
+
 
   if (current_node->right_child) {
 
@@ -338,45 +337,5 @@ bool avl_tree::contains(int target_value) {
   Node* result;
   if (!(result = find(target_value))) return false;
   return true;
-
-}
-
-int avl_tree::get_next_lower(int value) {
-  /* returns value within tree that is immediately smaller than the current value */
-  /* TODO: Get Predecessor */
-
-
-
-}
-
-int avl_tree::get_next_higher(int value) {
-  /* returns value within tree that is immediately larger than the current value */
-
-  Node* current_node{nullptr};
-
-  if ((current_node = find(value))) {
-
-    if (current_node->right_child) {
-
-      current_node = current_node->right_child;
-
-      while (current_node->left_child) {
-
-        current_node = current_node->left_child;
-
-      }
-
-      return current_node->data;
-    }
-
-  }
-
-  return value;
-
-}
-
-int avl_tree::get_median() {
-  /* TODO */
-
 
 }

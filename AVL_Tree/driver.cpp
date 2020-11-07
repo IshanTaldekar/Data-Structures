@@ -1,38 +1,26 @@
 #include "avl_trees.cpp"
-#include <limits>
 
 int main() {
 
-  avl_tree tree;
+  avl_tree* tree = new avl_tree;
+  int input_number {};
+  int counter {0};
+  while (counter < 100) {
 
-  int counter = 0;
-
-  while(true) {
-
-    long input;
     cout << "Input: ";
-    cin >> input;
+    cin >> input_number;
+
+    cout << endl;
+    tree->insert(input_number);
+    tree->display();
     cout << endl;
 
-    tree.insert(input);
-    tree.display();
+    cout.flush();
     cin.clear();
-    cin.sync();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    counter++;
-
-    if (counter % 5 == 0) {
-
-      cout << "MAX: " << tree.get_max() << endl;
-      cout << "MIN: " << tree.get_min() << endl;
-      cout << "NEXT GREATER OF: " << tree.get_next_lower(5) << endl;
-
-    }
-
-    cout << endl;
+    ++counter;
 
   }
+
 
   return 0;
 
